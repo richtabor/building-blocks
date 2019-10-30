@@ -3,6 +3,6 @@
  * these editor-specific styles using the same selectors will take precedence.
  */
 
-.wp-block-building-blocks-author {
-	color: green;
+img.wp-block-building-blocks-author__avatar-img {
+	height: 100%;
 }

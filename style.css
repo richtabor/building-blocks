@@ -4,7 +4,45 @@
  */
 
 .wp-block-building-blocks-author {
-	color: darkred;
-	background: #eeeeee;
-	padding: 2rem;
+	align-items: flex-start;
+	background: #f2f2f2;
+	display: flex;
+	padding: 2em;
+	position: relative;
+}
+
+.wp-block-building-blocks-author__avatar {
+	border-radius: 100%;
+	flex: 0 0 auto;
+	height: 6em;
+	margin: 0 2em 0 0;
+	position: relative;
+	width: 6em;
+}
+
+.wp-block-building-blocks-author__avatar-img {
+	background: #aaa;
+	border-radius: 100%;
+	display: inline-block;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.wp-block-building-blocks-author__content {
+	flex: 1 1 auto;
+}
+
+.wp-block-building-blocks-author__name {
+	display: block;
+	font-size: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.wp-block-building-blocks-author__biography {
+	margin: 0 0 1em;
 }
