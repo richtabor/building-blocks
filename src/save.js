@@ -9,9 +9,12 @@ import { RichText } from '@wordpress/block-editor';
 const save = ( { className, attributes } ) => {
 	return (
 		<div className={ className }>
-			<figure className="wp-block-building-blocks-author__avatar">
-				<img className="wp-block-building-blocks-author__avatar-img" src="" alt="" />
-			</figure>
+
+			{ attributes.mediaID && (
+				<figure className="wp-block-building-blocks-author__avatar">
+					<img className="wp-block-building-blocks-author__avatar-img" src={ attributes.mediaURL } alt="" />
+				</figure>
+			) }
 
 			<div className="wp-block-building-blocks-author__content">
 				<RichText.Content
