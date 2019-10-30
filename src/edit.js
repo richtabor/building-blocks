@@ -3,7 +3,8 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { Button, Dashicon } from '@wordpress/components';
 
 /**
  * Edit Function
@@ -20,12 +21,36 @@ class AuthorEdit extends Component {
 		const {
 			name,
 			biography,
+			mediaURL,
+			mediaID,
 		} = attributes;
+
+		const onSelectImage = ( media ) => {
+			setAttributes( {
+				mediaURL: media.url,
+				mediaID: media.id,
+			} );
+		};
 
 		return (
 			<div className={ className }>
 				<figure className="wp-block-building-blocks-author__avatar">
-					<img className="wp-block-building-blocks-author__avatar-img" src="" alt="" />
+					<MediaUploadCheck>
+						<MediaUpload
+							onSelect={ onSelectImage }
+							allowedTypes="image"
+							value={ mediaID }
+							render={ ( { open } ) => (
+								<Button onClick={ open }>
+									{ ! mediaID ?
+										<Dashicon icon="format-image" /> :
+										<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ __( 'Upload Avatar', 'building-blocks' ) } />
+									}
+								</Button>
+							) }
+						>
+						</MediaUpload>
+					</MediaUploadCheck>
 				</figure>
 
 				<div className="wp-block-building-blocks-author__content">
