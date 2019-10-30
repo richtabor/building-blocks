@@ -147,6 +147,7 @@ class AuthorEdit extends Component {
 											<Dashicon icon="format-image" /> :
 											<Fragment>
 												{ isBlobURL( mediaURL ) && <Spinner /> }
+												<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ mediaALT } />
 											</Fragment>
 										}
 									</Button>
