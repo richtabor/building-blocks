@@ -3,8 +3,8 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { RichText, MediaUpload, MediaUploadCheck, BlockControls } from '@wordpress/block-editor';
-import { Button, Dashicon, Toolbar, IconButton } from '@wordpress/components';
+import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls } from '@wordpress/block-editor';
+import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink } from '@wordpress/components';
 
 /**
  * Edit Function
@@ -16,6 +16,7 @@ class AuthorEdit extends Component {
 			className,
 			attributes,
 			setAttributes,
+			isSelected,
 		} = this.props;
 
 		const {
@@ -23,6 +24,7 @@ class AuthorEdit extends Component {
 			biography,
 			mediaURL,
 			mediaID,
+			mediaALT,
 		} = attributes;
 
 		const onSelectImage = ( media ) => {
@@ -55,6 +57,27 @@ class AuthorEdit extends Component {
  						</MediaUploadCheck>
  					</BlockControls>
  				}
+ 				{ isSelected && mediaID && (
+					<InspectorControls>
+						<PanelBody title={ __( 'Author Settings', 'building-blocks' ) }>
+							<TextareaControl
+								label={ __( 'Alt Text (Alternative Text)', 'building-blocks' ) }
+								value={ mediaALT }
+								onChange={ ( nextMediaALT ) => {
+									setAttributes( { mediaALT: nextMediaALT } );
+								} }
+								help={
+									<Fragment>
+										<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+											{ __( 'Describe the purpose of the image', 'building-blocks' ) }
+										</ExternalLink>
+										{ __( 'Leave empty if the image is purely decorative.', 'building-blocks' ) }
+									</Fragment>
+								}
+							/>
+						</PanelBody>
+					</InspectorControls>
+				) }
 				<div className={ className }>
 					<figure className="wp-block-building-blocks-author__avatar">
 						<MediaUploadCheck>
@@ -66,7 +89,7 @@ class AuthorEdit extends Component {
 									<Button onClick={ open }>
 										{ ! mediaID ?
 											<Dashicon icon="format-image" /> :
-											<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ __( 'Upload Avatar', 'building-blocks' ) } />
+											<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ mediaALT } />
 										}
 									</Button>
 								) }
