@@ -120,7 +120,7 @@ class AuthorEdit extends Component {
 							/>
 						</PanelBody>
 						<PanelColorSettings
-							title={ __( 'Color Settings', 'coblocks' ) }
+							title={ __( 'Color Settings', 'building-blocks' ) }
 							initialOpen={ false }
 							colorSettings={ [
 								{
