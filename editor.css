@@ -6,3 +6,30 @@
 img.wp-block-building-blocks-author__avatar-img {
 	height: 100%;
 }
+
+.wp-block-building-blocks-author__avatar {
+	background: #ffffff;
+	position: relative;
+}
+
+.wp-block-building-blocks-author__avatar button {
+	border-radius: 100%;
+	height: 100%;
+	left: 0;
+	padding: 0;
+	position: absolute;
+	width: 100%;
+}
+
+.wp-block-building-blocks-author__avatar button:focus:not(:disabled) {
+	background: none;
+	border: none;
+	box-shadow: 0 0 0 2px #007cba;
+	outline: none;
+}
+
+.wp-block-building-blocks-author__avatar button svg {
+	fill: #555d66;
+	margin: auto;
+	pointer-events: none;
+}
