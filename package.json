@@ -1,0 +1,20 @@
+{
+	"name": "building-blocks",
+	"version": "1.0.0",
+	"description": "The Building Blocks of Building Blocks Exercise ",
+	"repository": "git+https://github.com/richtabor/building-blocks.git",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"start": "wp-scripts start",
+		"build": "wp-scripts build",
+		"lint-js": "wp-scripts lint-js",
+		"lint-js:fix": "npm run lint-js -- --fix",
+		"env:start": "docker-compose up -d",
+		"env:stop": "docker-compose stop"
+	},
+	"devDependencies": {
+		"@wordpress/components": "^8.3.2",
+		"@wordpress/scripts": "^5.0.0"
+	}
+}

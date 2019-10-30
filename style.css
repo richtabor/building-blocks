@@ -1,0 +1,10 @@
+/**
+ * Note that these styles are loaded before editor styles, meaning
+ * editor-specific styles using these same selectors will take precedence.
+ */
+
+.wp-block-building-blocks-author {
+	color: darkred;
+	background: #eeeeee;
+	padding: 2rem;
+}
