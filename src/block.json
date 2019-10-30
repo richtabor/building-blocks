@@ -19,6 +19,12 @@
 			"source": "attribute",
 			"selector": "img",
 			"attribute": "src"
+		},
+		"mediaALT": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt"
 		}
 	}
 }
