@@ -1,7 +1,12 @@
 /**
+ * WordPress dependencies
+ */
+import { RichText } from '@wordpress/block-editor';
+
+/**
  * Save Function
  */
-const save = ( { className } ) => {
+const save = ( { className, attributes } ) => {
 	return (
 		<div className={ className }>
 			<figure className="wp-block-building-blocks-author__avatar">
@@ -9,12 +14,16 @@ const save = ( { className } ) => {
 			</figure>
 
 			<div className="wp-block-building-blocks-author__content">
-				<span className="wp-block-building-blocks-author__name">
-					Rich Tabor
-				</span>
-				<span className="wp-block-building-blocks-author__biography">
-					Senior Product Manager, WordPress Experience at GoDaddy. Previously CoBlocks & ThemeBeans.
-				</span>
+				<RichText.Content
+					tagName="span"
+					className="wp-block-building-blocks-author__name"
+					value={ attributes.name }
+				/>
+				<RichText.Content
+					tagName="span"
+					className="wp-block-building-blocks-author__biography"
+					value={ attributes.biography }
+				/>
 			</div>
 		</div>
 	);

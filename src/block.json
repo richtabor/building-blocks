@@ -1,0 +1,15 @@
+{
+	"name": "building-blocks/author",
+	"category": "common",
+	"attributes": {
+		"name": {
+			"type": "string",
+			"selector": ".wp-block-building-blocks-author__name"
+		},
+		"biography": {
+			"type": "array",
+			"source": "children",
+			"selector": ".wp-block-building-blocks-author__biography"
+		}
+	}
+}
