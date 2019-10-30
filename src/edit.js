@@ -57,13 +57,6 @@ class AuthorEdit extends Component {
 			/>
 		);
 
-		const onSelectImage = ( media ) => {
-			setAttributes( {
-				mediaURL: media.url,
-				mediaID: media.id,
-			} );
-		};
-
 		return (
 			<Fragment>
 				{ mediaID &&
@@ -71,7 +64,7 @@ class AuthorEdit extends Component {
  						<MediaUploadCheck>
  							<Toolbar>
  								<MediaUpload
- 									onSelect={ onSelectImage }
+ 									onSelect={ this.onSelectImage }
  									allowedTypes="image"
  									value={ mediaID }
  									render={ ( { open } ) => (
@@ -113,7 +106,7 @@ class AuthorEdit extends Component {
 					<figure className="wp-block-building-blocks-author__avatar">
 						<MediaUploadCheck>
 							<MediaUpload
-								onSelect={ onSelectImage }
+								onSelect={ this.onSelectImage }
 								allowedTypes="image"
 								value={ mediaID }
 								render={ ( { open } ) => (
