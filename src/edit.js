@@ -3,13 +3,36 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
+import { mediaUpload } from '@wordpress/editor';
 import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink } from '@wordpress/components';
+import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink, DropZone } from '@wordpress/components';
 
 /**
  * Edit Function
  */
 class AuthorEdit extends Component {
+	constructor() {
+		super( ...arguments );
+		this.addImage = this.addImage.bind( this );
+		this.onSelectImage = this.onSelectImage.bind( this );
+	}
+
+	onSelectImage( media ) {
+		if ( media ) {
+			this.props.setAttributes( {
+				mediaURL: media.url,
+				mediaID: media.id,
+			} );
+		}
+	}
+
+	addImage( files ) {
+		mediaUpload( {
+			allowedTypes: [ 'image' ],
+			filesList: files,
+			onFileChange: ( [ media ] ) => this.onSelectImage( media ),
+		} );
+	}
 
 	render() {
 		const {
@@ -26,6 +49,13 @@ class AuthorEdit extends Component {
 			mediaID,
 			mediaALT,
 		} = attributes;
+
+		const dropZone = (
+			<DropZone
+				onFilesDrop={ this.addImage }
+				label={ __( 'Drop to upload as avatar', 'building-blocks' ) }
+			/>
+		);
 
 		const onSelectImage = ( media ) => {
 			setAttributes( {
@@ -79,6 +109,7 @@ class AuthorEdit extends Component {
 					</InspectorControls>
 				) }
 				<div className={ className }>
+					{ dropZone }
 					<figure className="wp-block-building-blocks-author__avatar">
 						<MediaUploadCheck>
 							<MediaUpload
