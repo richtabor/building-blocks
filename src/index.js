@@ -9,7 +9,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 /**
@@ -22,6 +22,17 @@ registerBlockType( name, {
 	description: __( 'Add an author biography to build credibility and authority.', 'building-blocks' ),
 	icon: icon,
 	category,
+	styles: [
+		{
+			name: 'circle',
+			label: _x( 'Circle', 'block style', 'building-blocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'square',
+			label: _x( 'Square', 'block style', 'building-blocks' ),
+		},
+	],
 	example: {},
 	attributes,
 	edit,

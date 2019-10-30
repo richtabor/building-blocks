@@ -46,3 +46,8 @@
 .wp-block-building-blocks-author__biography {
 	margin: 0 0 1em;
 }
+
+.is-style-square .wp-block-building-blocks-author__avatar,
+.is-style-square .wp-block-building-blocks-author__avatar-img {
+	border-radius: 0;
+}
