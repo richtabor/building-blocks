@@ -5,10 +5,13 @@
 
 .wp-block-building-blocks-author {
 	align-items: flex-start;
-	background: #f2f2f2;
 	display: flex;
 	padding: 2em;
 	position: relative;
+}
+
+.wp-block-building-blocks-author:not(.has-background) {
+	background: #f2f2f2;
 }
 
 .wp-block-building-blocks-author__avatar {
