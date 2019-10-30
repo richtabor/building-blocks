@@ -3,8 +3,8 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { RichText, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Button, Dashicon } from '@wordpress/components';
+import { RichText, MediaUpload, MediaUploadCheck, BlockControls } from '@wordpress/block-editor';
+import { Button, Dashicon, Toolbar, IconButton } from '@wordpress/components';
 
 /**
  * Edit Function
@@ -34,6 +34,27 @@ class AuthorEdit extends Component {
 
 		return (
 			<Fragment>
+				{ mediaID &&
+ 					<BlockControls>
+ 						<MediaUploadCheck>
+ 							<Toolbar>
+ 								<MediaUpload
+ 									onSelect={ onSelectImage }
+ 									allowedTypes="image"
+ 									value={ mediaID }
+ 									render={ ( { open } ) => (
+ 										<IconButton
+ 											className="components-toolbar__control"
+ 											label={ __( 'Edit avatar', 'building-blocks' ) }
+ 											icon="edit"
+ 											onClick={ open }
+ 										/>
+ 									) }
+ 								/>
+ 							</Toolbar>
+ 						</MediaUploadCheck>
+ 					</BlockControls>
+ 				}
 				<div className={ className }>
 					<figure className="wp-block-building-blocks-author__avatar">
 						<MediaUploadCheck>
