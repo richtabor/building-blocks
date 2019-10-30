@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { mediaUpload } from '@wordpress/editor';
-import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls, withColors } from '@wordpress/block-editor';
+import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls, withColors, PanelColorSettings } from '@wordpress/block-editor';
 import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink, DropZone, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -48,6 +48,7 @@ class AuthorEdit extends Component {
 			setAttributes,
 			isSelected,
 			backgroundColor,
+			setBackgroundColor,
 		} = this.props;
 
 		const {
@@ -118,6 +119,18 @@ class AuthorEdit extends Component {
 								}
 							/>
 						</PanelBody>
+						<PanelColorSettings
+							title={ __( 'Color Settings', 'coblocks' ) }
+							initialOpen={ false }
+							colorSettings={ [
+								{
+									value: backgroundColor.color,
+									onChange: setBackgroundColor,
+									label: __( 'Background Color', 'building-blocks' ),
+								},
+							] }
+						>
+						</PanelColorSettings>
 					</InspectorControls>
 				) }
 				<div className={ classes } style={ styles }>
