@@ -60,6 +60,21 @@ class AuthorEdit extends Component {
  				{ isSelected && mediaID && (
 					<InspectorControls>
 						<PanelBody title={ __( 'Author Settings', 'building-blocks' ) }>
+							<TextareaControl
+								label={ __( 'Alt Text (Alternative Text)', 'building-blocks' ) }
+								value={ mediaALT }
+								onChange={ ( nextMediaALT ) => {
+									setAttributes( { mediaALT: nextMediaALT } );
+								} }
+								help={
+									<Fragment>
+										<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+											{ __( 'Describe the purpose of the image', 'building-blocks' ) }
+										</ExternalLink>
+										{ __( 'Leave empty if the image is purely decorative.', 'building-blocks' ) }
+									</Fragment>
+								}
+							/>
 						</PanelBody>
 					</InspectorControls>
 				) }
