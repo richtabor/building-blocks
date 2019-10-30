@@ -12,7 +12,7 @@ const save = ( { className, attributes } ) => {
 
 			{ attributes.mediaID && (
 				<figure className="wp-block-building-blocks-author__avatar">
-					<img className="wp-block-building-blocks-author__avatar-img" src={ attributes.mediaURL } alt="" />
+					<img className="wp-block-building-blocks-author__avatar-img" src={ attributes.mediaURL } alt={ attributes.mediaALT } />
 				</figure>
 			) }
 

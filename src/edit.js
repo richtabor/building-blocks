@@ -89,7 +89,7 @@ class AuthorEdit extends Component {
 									<Button onClick={ open }>
 										{ ! mediaID ?
 											<Dashicon icon="format-image" /> :
-											<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ __( 'Upload Avatar', 'building-blocks' ) } />
+											<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ mediaALT } />
 										}
 									</Button>
 								) }
