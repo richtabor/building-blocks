@@ -25,6 +25,12 @@
 			"source": "attribute",
 			"selector": "img",
 			"attribute": "alt"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
 		}
 	}
 }
