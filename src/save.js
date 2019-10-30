@@ -1,14 +1,31 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
-import { RichText } from '@wordpress/block-editor';
+import { RichText, getColorClassName } from '@wordpress/block-editor';
 
 /**
  * Save Function
  */
 const save = ( { className, attributes } ) => {
+
+	const backgroundClass = getColorClassName( 'background-color', attributes.backgroundColor );
+
+	const classes = classnames( {
+		'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+		[ backgroundClass ]: backgroundClass,
+	} );
+
+	const styles = {
+		backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+	};
+
 	return (
-		<div className={ className }>
+		<div className={ classes } style={ styles }>
 
 			{ attributes.mediaID && (
 				<figure className="wp-block-building-blocks-author__avatar">
