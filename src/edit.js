@@ -5,7 +5,8 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { mediaUpload } from '@wordpress/editor';
 import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink, DropZone } from '@wordpress/components';
+import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink, DropZone, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Edit Function
@@ -113,7 +114,9 @@ class AuthorEdit extends Component {
 									<Button onClick={ open }>
 										{ ! mediaID ?
 											<Dashicon icon="format-image" /> :
-											<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ mediaALT } />
+											<Fragment>
+												{ isBlobURL( mediaURL ) && <Spinner /> }
+											</Fragment>
 										}
 									</Button>
 								) }

@@ -37,3 +37,8 @@ img.wp-block-building-blocks-author__avatar-img {
 .is-style-square .wp-block-building-blocks-author__avatar button {
 	border-radius: 0;
 }
+
+.wp-block-building-blocks-author__avatar .components-spinner {
+	margin: auto;
+	z-index: 1;
+}
