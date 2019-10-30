@@ -33,3 +33,7 @@ img.wp-block-building-blocks-author__avatar-img {
 	margin: auto;
 	pointer-events: none;
 }
+
+.is-style-square .wp-block-building-blocks-author__avatar button {
+	border-radius: 0;
+}
