@@ -10,6 +10,15 @@
 			"type": "array",
 			"source": "children",
 			"selector": ".wp-block-building-blocks-author__biography"
+		},
+		"mediaID": {
+			"type": "number"
+		},
+		"mediaURL": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src"
 		}
 	}
 }
