@@ -3,8 +3,8 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { RichText, MediaUpload, MediaUploadCheck, BlockControls } from '@wordpress/block-editor';
-import { Button, Dashicon, Toolbar, IconButton } from '@wordpress/components';
+import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls } from '@wordpress/block-editor';
+import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink } from '@wordpress/components';
 
 /**
  * Edit Function
@@ -16,6 +16,7 @@ class AuthorEdit extends Component {
 			className,
 			attributes,
 			setAttributes,
+			isSelected,
 		} = this.props;
 
 		const {
@@ -23,6 +24,7 @@ class AuthorEdit extends Component {
 			biography,
 			mediaURL,
 			mediaID,
+			mediaALT,
 		} = attributes;
 
 		const onSelectImage = ( media ) => {
@@ -55,6 +57,12 @@ class AuthorEdit extends Component {
  						</MediaUploadCheck>
  					</BlockControls>
  				}
+ 				{ isSelected && mediaID && (
+					<InspectorControls>
+						<PanelBody title={ __( 'Author Settings', 'building-blocks' ) }>
+						</PanelBody>
+					</InspectorControls>
+				) }
 				<div className={ className }>
 					<figure className="wp-block-building-blocks-author__avatar">
 						<MediaUploadCheck>
