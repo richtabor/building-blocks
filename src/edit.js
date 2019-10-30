@@ -3,13 +3,37 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
+import { mediaUpload } from '@wordpress/editor';
 import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink } from '@wordpress/components';
+import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink, DropZone, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Edit Function
  */
 class AuthorEdit extends Component {
+	constructor() {
+		super( ...arguments );
+		this.addImage = this.addImage.bind( this );
+		this.onSelectImage = this.onSelectImage.bind( this );
+	}
+
+	onSelectImage( media ) {
+		if ( media ) {
+			this.props.setAttributes( {
+				mediaURL: media.url,
+				mediaID: media.id,
+			} );
+		}
+	}
+
+	addImage( files ) {
+		mediaUpload( {
+			allowedTypes: [ 'image' ],
+			filesList: files,
+			onFileChange: ( [ media ] ) => this.onSelectImage( media ),
+		} );
+	}
 
 	render() {
 		const {
@@ -27,12 +51,12 @@ class AuthorEdit extends Component {
 			mediaALT,
 		} = attributes;
 
-		const onSelectImage = ( media ) => {
-			setAttributes( {
-				mediaURL: media.url,
-				mediaID: media.id,
-			} );
-		};
+		const dropZone = (
+			<DropZone
+				onFilesDrop={ this.addImage }
+				label={ __( 'Drop to upload as avatar', 'building-blocks' ) }
+			/>
+		);
 
 		return (
 			<Fragment>
@@ -41,7 +65,7 @@ class AuthorEdit extends Component {
  						<MediaUploadCheck>
  							<Toolbar>
  								<MediaUpload
- 									onSelect={ onSelectImage }
+ 									onSelect={ this.onSelectImage }
  									allowedTypes="image"
  									value={ mediaID }
  									render={ ( { open } ) => (
@@ -79,17 +103,20 @@ class AuthorEdit extends Component {
 					</InspectorControls>
 				) }
 				<div className={ className }>
+					{ dropZone }
 					<figure className="wp-block-building-blocks-author__avatar">
 						<MediaUploadCheck>
 							<MediaUpload
-								onSelect={ onSelectImage }
+								onSelect={ this.onSelectImage }
 								allowedTypes="image"
 								value={ mediaID }
 								render={ ( { open } ) => (
 									<Button onClick={ open }>
 										{ ! mediaID ?
 											<Dashicon icon="format-image" /> :
-											<img className="wp-block-building-blocks-author__avatar-img" src={ mediaURL } alt={ mediaALT } />
+											<Fragment>
+												{ isBlobURL( mediaURL ) && <Spinner /> }
+											</Fragment>
 										}
 									</Button>
 								) }
