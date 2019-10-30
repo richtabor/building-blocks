@@ -1,10 +1,16 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { mediaUpload } from '@wordpress/editor';
-import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls } from '@wordpress/block-editor';
+import { RichText, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls, withColors } from '@wordpress/block-editor';
 import { Button, Dashicon, Toolbar, IconButton, PanelBody, TextareaControl, ExternalLink, DropZone, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -41,6 +47,7 @@ class AuthorEdit extends Component {
 			attributes,
 			setAttributes,
 			isSelected,
+			backgroundColor,
 		} = this.props;
 
 		const {
@@ -57,6 +64,17 @@ class AuthorEdit extends Component {
 				label={ __( 'Drop to upload as avatar', 'building-blocks' ) }
 			/>
 		);
+
+		const classes = classnames(
+			className, {
+				'has-background': backgroundColor.color,
+				[ backgroundColor.class ]: backgroundColor.class,
+			}
+		);
+
+		const styles = {
+			backgroundColor: backgroundColor.color,
+		};
 
 		return (
 			<Fragment>
@@ -102,7 +120,7 @@ class AuthorEdit extends Component {
 						</PanelBody>
 					</InspectorControls>
 				) }
-				<div className={ className }>
+				<div className={ classes } style={ styles }>
 					{ dropZone }
 					<figure className="wp-block-building-blocks-author__avatar">
 						<MediaUploadCheck>
@@ -162,4 +180,7 @@ class AuthorEdit extends Component {
 	}
 }
 
-export default AuthorEdit;
+
+export default compose( [
+	withColors( 'backgroundColor' ),
+] )( AuthorEdit );
