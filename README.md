@@ -8,7 +8,7 @@ First, you need a WordPress Environment to run the plugin on. The quickest way t
 In the folder of your preference, clone this project and enter the working directory:
 
 ```
-git clone git@github.com:richtabor/building-blocks.git
+git clone https://github.com/richtabor/building-blocks.git
 cd building-blocks
 ```
 
