@@ -31,3 +31,4 @@ cd building-blocks
 
 ## Additional Resources:
 [Gutenberg developer documentation](https://wordpress.org/gutenberg/handbook/)
+[More Gutenberg examples](https://github.com/WordPress/gutenberg-examples) - which this example is based off of
