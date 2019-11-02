@@ -41,7 +41,7 @@ function building_blocks_register_block() {
 		'building-blocks',
 		plugins_url( 'build/index.js', __FILE__ ),
 		$asset_file['dependencies'],
-		$asset_file['version'],
+		$asset_file['version']
 	);
 
 	// Editor Styling
