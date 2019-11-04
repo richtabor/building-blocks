@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Load all translations for our plugin from the MO file.
-*/
+ */
 function building_blocks_load_textdomain() {
 
 	load_plugin_textdomain( 'building-blocks', false, basename( __DIR__ ) . '/languages' );
@@ -34,14 +34,14 @@ function building_blocks_register_block() {
 	}
 
 	// automatically load dependencies and version
-	$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php' );
+	$asset_file = include plugin_dir_path( __FILE__ ) . 'build/index.asset.php';
 
 	// Block Javascript
 	wp_register_script(
 		'building-blocks',
 		plugins_url( 'build/index.js', __FILE__ ),
 		$asset_file['dependencies'],
-		$asset_file['version'],
+		$asset_file['version']
 	);
 
 	// Editor Styling
